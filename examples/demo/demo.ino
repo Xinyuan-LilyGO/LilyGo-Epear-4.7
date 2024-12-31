@@ -429,7 +429,10 @@ void loop()
 
                         Serial.end();
 
-                        // BOOT(STR_IO0) Button wakeup
+                        // Timer wakeup  + gpio wakeup = 388uA , see  https://github.com/Xinyuan-LilyGO/LilyGo-EPD47/issues/144
+                        esp_sleep_enable_timer_wakeup(30 * 1000000ULL);
+
+                        // BOOT(STR_IO0) Button wakeup 388uA
                         esp_sleep_enable_ext1_wakeup(_BV(0), ESP_EXT1_WAKEUP_ANY_LOW);
 
                         esp_deep_sleep_start();
