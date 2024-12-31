@@ -240,6 +240,18 @@ void epd_draw_circle(int32_t x, int32_t y, int32_t r, uint8_t color, uint8_t *fr
 void epd_fill_circle(int32_t x, int32_t y, int32_t r, uint8_t color, uint8_t *framebuffer);
 
 /**
+ * @brief Draw an oval with given center and radius
+ *
+ * @param x0          Center-point x coordinate
+ * @param y0          Center-point y coordinate
+ * @param rx          Radius of the circle in x plane
+ * @param ry          Radius of the circle in y plane
+ * @param color       The gray value of the line (0-255);
+ * @param framebuffer The framebuffer to draw to
+ */
+void epd_draw_oval(int x0, int y0, int rx, int ry, uint8_t color, uint8_t *framebuffer);
+
+/**
  * @brief Draw a rectanle with no fill color
  *
  * @param x           Top left corner x coordinate
