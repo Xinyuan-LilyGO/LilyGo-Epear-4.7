@@ -124,4 +124,37 @@ Please enter the upload mode manually.
    3. Release the RST
    4. Release the BOOT(IO0) button
    5. Upload sketch
-   
+
+# 8️⃣ GPIO List
+
+| ESP32S3 GPIO | Connect To          | Free |
+| ------------ | ------------------- | ---- |
+| 13           | 74HCT4094D CFG_DATA | ❌    |
+| 12           | 74HCT4094D CFG_CLK  | ❌    |
+| 0            | 74HCT4094D CFG_STR  | ❌    |
+| 38           | E-paper CKV         | ❌    |
+| 40           | E-paper STH         | ❌    |
+| 41           | E-paper CKH         | ❌    |
+| 8            | E-paper D0          | ❌    |
+| 1            | E-paper D1          | ❌    |
+| 2            | E-paper D2          | ❌    |
+| 3            | E-paper D3          | ❌    |
+| 4            | E-paper D4          | ❌    |
+| 5            | E-paper D5          | ❌    |
+| 6            | E-paper D6          | ❌    |
+| 7            | E-paper D7          | ❌    |
+| 21           | Button              | ❌    |
+| 14           | Battery ADC         | ❌    |
+| 16           | SD MISO             | ❌    |
+| 15           | SD MOSI             | ❌    |
+| 11           | SD  SCK             | ❌    |
+| 42           | SD  CS              | ❌    |
+| 18           | SDA                 | ❌    |
+| 17           | SCL                 | ❌    |
+| 47           | TouchPanel IRQ      | ❌    |
+| 45           | No Connect any      | ✅    |
+| 10           | No Connect any      | ✅    |
+| 48           | No Connect any      | ✅    |
+| 39           | No Connect any      | ✅    |
+
+* The GPIOs marked with ✅ are free to use.
