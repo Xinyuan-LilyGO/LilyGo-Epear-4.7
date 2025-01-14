@@ -157,4 +157,4 @@ Please enter the upload mode manually.
 | 48           | No Connect any      | ✅    |
 | 39           | No Connect any      | ✅    |
 
-* The GPIOs marked with ✅ are free to use.
+* The GPIOs marked with ✅ are free to use. GPIO10 Can be used for analog input, but not for others.
