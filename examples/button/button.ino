@@ -109,8 +109,8 @@ void displayInfo(void)
 
 void buttonPressed(Button2 &b)
 {
-    displayInfo();
     state++;
+    displayInfo();
 }
 
 
