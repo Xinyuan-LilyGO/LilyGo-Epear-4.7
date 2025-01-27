@@ -403,7 +403,7 @@ void setup()
     DBG_OUTPUT_PORT.println("HTTP server started");
 
 #if defined(USE_SD)
-    SPI.begin(SD_SCLK, SD_SCLK, SD_MOSI, SD_CS);
+    SPI.begin(SD_SCLK, SD_MISO, SD_MOSI, SD_CS);
     bool rlst = FILE_SYSTEM.begin(SD_CS, SPI);
 #else
     bool rlst = FILE_SYSTEM.begin(true);
