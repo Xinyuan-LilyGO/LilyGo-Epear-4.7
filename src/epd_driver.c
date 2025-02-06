@@ -432,6 +432,54 @@ static void epd_fill_circle_helper(int32_t x0, int32_t y0, int32_t r, int32_t co
     }
 }
 
+void epd_draw_oval(int x0, int y0, int rx, int ry, uint8_t color, uint8_t *framebuffer) {
+    int x = 0;
+    int y = ry;
+    int64_t rxSq = (int64_t)rx * rx;
+    int64_t rySq = (int64_t)ry * ry;
+    int64_t twoRxSq = 2 * rxSq;
+    int64_t twoRySq = 2 * rySq;
+    int64_t px = 0;
+    int64_t py = twoRxSq * y;
+
+    // Region 1: Top and bottom edges
+    int64_t p = round(rySq - (rxSq * ry) + (0.25 * rxSq));
+    while (px < py) {
+        epd_draw_pixel(x0 + x, y0 + y, color, framebuffer);
+        epd_draw_pixel(x0 - x, y0 + y, color, framebuffer);
+        epd_draw_pixel(x0 + x, y0 - y, color, framebuffer);
+        epd_draw_pixel(x0 - x, y0 - y, color, framebuffer);
+
+        x++;
+        px += twoRySq;
+        if (p < 0) {
+            p += rySq + px;
+        } else {
+            y--;
+            py -= twoRxSq;
+            p += rySq + px - py;
+        }
+    }
+
+    // Region 2: Left and right edges
+    p = round(rySq * (x + 0.5) * (x + 0.5) + rxSq * (y - 1) * (y - 1) - rxSq * rySq);
+    while (y >= 0) {
+        epd_draw_pixel(x0 + x, y0 + y, color, framebuffer);
+        epd_draw_pixel(x0 - x, y0 + y, color, framebuffer);
+        epd_draw_pixel(x0 + x, y0 - y, color, framebuffer);
+        epd_draw_pixel(x0 - x, y0 - y, color, framebuffer);
+
+        y--;
+        py -= twoRxSq;
+        if (p > 0) {
+            p += rxSq - py;
+        } else {
+            x++;
+            px += twoRySq;
+            p += rxSq - py + px;
+        }
+    }
+}
 
 void epd_draw_rect(int32_t x, int32_t y, int32_t w, int32_t h, uint8_t color, uint8_t *framebuffer)
 {
